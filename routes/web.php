@@ -19,12 +19,25 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/forecasts', function() {
-    return view('forecasts');
-});
+// Forecast routes for users
+Route::get('/forecasts', 'ForecastController@index'); 
 
-Route::get('/results', function() {
-    return view('results');
-});
+// Results routes for users and admin
+// Route::get('/results', 'GameController@index');
+Route::get('/games', 'GameController@index');
+Route::post('/games', 'GameController@store');
+    // ->middleware('is_admin')    
+    // ->name('admin');
+
+// Teams routes for admin
+Route::get('/team', 'TeamController@index');
+Route::post('/team', 'TeamController@store');
+
+// Events routes for admin
+Route::get('/events', 'EventController@index');
+Route::post('/events', 'EventController@store');
+
+
+    
 
 

@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        return view('team');
     }
 
     /**
@@ -24,7 +24,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -35,7 +35,14 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = [
+            'name' => request('name'), 
+            'abbreviation' => request('abbreviation')
+        ];
+
+        Team::create($insert);
+
+        return redirect('team');
     }
 
     /**

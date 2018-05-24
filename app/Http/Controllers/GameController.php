@@ -14,7 +14,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        // return view('results');
+        return view('games');
     }
 
     /**
@@ -24,7 +25,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        // return view('games');        
     }
 
     /**
@@ -35,7 +36,18 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = [
+            'event_id' => request('event_id'), 
+            'team1_id' => request('team1_id'),
+            'team2_id' => request('team2_id'),
+            'start_time' => request('start_time'),
+            'result1' => request('result1'),
+            'result2' => request('result2'),
+        ];
+
+        Game::create($insert);
+
+        return redirect('games');
     }
 
     /**

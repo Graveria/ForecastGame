@@ -73,7 +73,6 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -88,11 +87,8 @@
 
                 <div class="links">
                     <img href="https://png.pngtree.com/thumb_back/fw800/back_pic/04/04/60/29580acf9a361fe.jpg" class="img-responsive" alt="">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+
+                    <a href="https://github.com/Graveria/ForecastGame">GitHub</a>
                 </div>
             </div>
         </div>

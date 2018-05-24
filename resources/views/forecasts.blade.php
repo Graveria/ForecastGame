@@ -35,40 +35,6 @@
                     </label>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-
-                <td>GER</td>
-                <td>SWE</td>
-                <td>2018.05.12</td>
-                <td>
-                    <label class="radio-inline">
-                        <input type="radio" id="forecast-3" value="forecast-3" name="2" required>
-                    </label>
-                </td>
-                <td>
-                    <label class="radio-inline">
-                        <input type="radio" id="forecast-1" value="forecast-1" name="2" required>
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-
-                <td>LAT</td>
-                <td>LIT</td>
-                <td>2018.05.13</td>
-                <td>
-                    <label class="radio-inline">
-                        <input type="radio" id="forecast-1" value="forecast-1" name="3" required>
-                    </label>
-                </td>
-                <td>
-                    <label class="radio-inline">
-                        <input type="radio" id="forecast-1" value="forecast-1" name="3" required>
-                    </label>
-                </td>
-            </tr>
         </tbody>
     </table>
 @endsection

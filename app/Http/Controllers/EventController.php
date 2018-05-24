@@ -14,7 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return view('events');        
+        
     }
 
     /**
@@ -24,7 +25,6 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +35,14 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = [
+            'name' => request('name'), 
+            'start_date'  => request('start_date')
+        ];
+
+        Event::create($insert);
+
+        return redirect('events');
     }
 
     /**

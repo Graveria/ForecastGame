@@ -7,29 +7,35 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link fcast-text" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link fcast-text" href="forecasts">Forecasts</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link fcast-text" href="results">Results</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link fcast-text" href="top">Top</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link fcast-text" href="users">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fcast-text" href="team">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fcast-text" href="games">Games</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link fcast-text" href="events">Events</a>
             </li>
 
         <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ml-auto">
+        {{--  <ul class="navbar-nav ml-auto">  --}}
                 <!-- Authentication Links -->
                 @guest
                     {{--  <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                     <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>  --}}
                 @else
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown user-right">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
@@ -47,7 +53,7 @@
                         </div>
                     </li>
                 @endguest
-            </ul>
+            {{--  </ul>  --}}
         </ul>
     </div>
 </nav>
