@@ -14,6 +14,10 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        // $this->visit('/');
+        // $this->see('Forecast game');
+        $response = $this->get('/');
+        
+                $response->assertStatus(200);
     }
 }

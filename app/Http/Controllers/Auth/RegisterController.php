@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Game;
+use App\Forecast;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,11 +65,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        
+        
+        $userNew = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'type' => User::DEFAULT_TYPE,
         ]);
+        $userId = $userNew->id;
+
+        $gameData = Game::all('id')->toArray();
+        $gameID = [];
+        foreach($gameData as $key =>$value) {
+            // $usersId[$key] = $value['id'];
+
+            $forecastInsert = [
+                'user_id' => $userId,
+                'game_id' => $value['id'],
+                'forecast_result1' => 0,
+                'forecast_result2' => 0,
+                'points' => 0,
+            ];
+
+            Forecast::create($forecastInsert);   
+        }
+        
+        return $userNew;
+        
     }
 }

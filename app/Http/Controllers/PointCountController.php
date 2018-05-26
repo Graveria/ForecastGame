@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\PointCount;
 use Illuminate\Http\Request;
+use DB;
 
 class PointCountController extends Controller
 {
@@ -14,7 +15,21 @@ class PointCountController extends Controller
      */
     public function index()
     {
-        //
+        $playerTop = DB::select('select u.name name, sum(f.points) summ
+        FROM users u, forecasts f
+        WHERE u.id=f.user_id
+        GROUP BY name
+        ORDER BY summ DESC');
+
+        // dd($playerTop);
+
+        // u.name, sum(f.points) SUM
+        // FROM users u, forecasts f
+        // WHERE u.id=f.user_id
+        // GROUP BY u.name
+        // ORDER BY SUM DESC
+
+        return view('top', compact('playerTop'));
     }
 
     /**

@@ -14,7 +14,7 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->increments('game_id');            
+            $table->increments('id');  
             $table->integer('event_id');
             $table->integer('team1_id');
             $table->integer('team2_id');

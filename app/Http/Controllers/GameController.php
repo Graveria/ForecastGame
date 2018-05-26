@@ -7,6 +7,11 @@ use Carbon\Carbon;
 use App\Event;
 use App\Team;
 use App\Forecast;
+use Auth;
+use Illuminate\Http\Request;
+use DB;
+use App\Results;
+use Illuminate\Foundation\Auth\User;
 
 
 class GameController extends Controller
@@ -18,7 +23,13 @@ class GameController extends Controller
      */
     public function index()
     {
-        
+        $resultsAll = DB::select('SELECT t1.abbreviation team1, t2.abbreviation team2,
+        g.start_time,g.time,g.id id, g.result1, g.result2
+       FROM games g
+       INNER JOIN teams t1 on g.team1_id = t1.id
+       INNER JOIN teams t2 on g.team2_id = t2.id');
+     //  dd($resultsAll);
+       return view('results', compact('resultsAll'));
     }
 
     /**
@@ -59,11 +70,23 @@ class GameController extends Controller
             'result2' => request('result2')
         ];
 
-        Game::create($insert);
+        $gameId = Game::create($insert)->id;
 
-        $forecastInsert = [
+        $usersData = User::all('id')->toArray();
+        $usersId = [];
+        foreach($usersData as $key =>$value) {
+            // $usersId[$key] = $value['id'];
 
-        ];
+            $forecastInsert = [
+                'user_id' => $value['id'],
+                'id' => $gameId,
+                'forecast_result1' => 0,
+                'forecast_result2' => 0,
+                'points' => 0,
+            ];
+
+            Forecast::create($forecastInsert);   
+        }
 
         return redirect('games');
     }
@@ -99,7 +122,31 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        //
+        // , compact('userForecast')
+        $update = [
+            'result1' => request('result1'),
+            'result2' => request('result2')
+        ];
+
+        $resultsRow = Game::where('id', request('id'))->first();
+        // dd($resultsRow);
+        $resultsRow->result1 = request('result1');
+        $resultsRow->result2 = request('result2');
+        // dd($resultsRow);
+        
+        $resultsRow->save();
+
+        // With every update, inserting in forecast table points
+        $forecastsAll = Forecast::where('game_id', request('id'))->get();
+        // dd($forecastsAll);
+        foreach($forecastsAll as $forRow) {
+            // $forRow['']
+            $forRow['points'] = Game::pointCount(request('result1'), request('result2'), $forRow['forecast_result1'], $forRow['forecast_result2']); 
+            $forRow->save();
+        }
+        // dd($forRow);
+        
+        return redirect('/results');
     }
 
     /**

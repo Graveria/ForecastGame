@@ -15,9 +15,9 @@
             <li class="nav-item">
                 <a class="nav-link fcast-text" href="top">Top</a>
             </li>
-            <li class="nav-item">
+            {{--  <li class="nav-item">
                 <a class="nav-link fcast-text" href="users">Users</a>
-            </li>
+            </li>  --}}
             <li class="nav-item">
                 <a class="nav-link fcast-text" href="team">Teams</a>
             </li>

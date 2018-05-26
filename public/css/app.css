@@ -10444,6 +10444,16 @@ a.text-dark:focus {
   line-height: 14px;
 }
 
+.result-input {
+  width: 60px;
+  margin-bottom: 0px;
+}
+
+.result-input input {
+  height: 25px;
+  line-height: 14px;
+}
+
 body {
   height: 100%;
   position: relative;

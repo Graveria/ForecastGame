@@ -17,15 +17,23 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::get('/home', 'ForecastController@index');
 // Forecast routes for users
-Route::get('/forecasts', 'ForecastController@index'); 
+Route::get('/forecasts', 'ForecastController@index');
+Route::post('/forecasts/update/{id}', 'ForecastController@update'); 
 
 // Results routes for users and admin
 // Route::get('/results', 'GameController@index');
 Route::get('/games', 'GameController@create');
 Route::post('/games', 'GameController@store');
+// Result routes for admins and users
+Route::get('/results', 'GameController@index');
+Route::post('/results/update/{id}', 'GameController@update'); 
+
+
     // ->middleware('is_admin')    
     // ->name('admin');
 
@@ -36,6 +44,10 @@ Route::post('/team', 'TeamController@store');
 // Events routes for admin
 Route::get('/events', 'EventController@index');
 Route::post('/events', 'EventController@store');
+
+// Player top 
+Route::get('/top', 'PointCountController@index');
+
 
 
     
