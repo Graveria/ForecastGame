@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Event;
+use App\Team;
+use App\Forecast;
+
 
 class GameController extends Controller
 {
@@ -14,8 +18,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        // return view('results');
-        return view('games');
+        
     }
 
     /**
@@ -25,7 +28,17 @@ class GameController extends Controller
      */
     public function create()
     {
-        // return view('games');        
+        // Selectin all event names and ids
+        $eventList = Event::pluck('name', 'id');
+        // Selecting all team names and ids
+        $teamList = Team::pluck('name', 'id');
+
+        // dd($eventList);
+        return view('games', compact('eventList','teamList'));
+
+        // return view('games', [
+        //     'all_teams' => $teams
+        // ]);    
     }
 
     /**
@@ -34,18 +47,23 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         $insert = [
             'event_id' => request('event_id'), 
             'team1_id' => request('team1_id'),
             'team2_id' => request('team2_id'),
             'start_time' => request('start_time'),
+            'time' => Carbon::parse(request('time'))->toTimeString(),
             'result1' => request('result1'),
-            'result2' => request('result2'),
+            'result2' => request('result2')
         ];
 
         Game::create($insert);
+
+        $forecastInsert = [
+
+        ];
 
         return redirect('games');
     }

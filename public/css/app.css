@@ -10434,6 +10434,16 @@ a.text-dark:focus {
   color: #28a745 !important;
 }
 
+.forecast-input {
+  width: 60px;
+  margin-bottom: 0px;
+}
+
+.forecast-input input {
+  height: 25px;
+  line-height: 14px;
+}
+
 body {
   height: 100%;
   position: relative;
@@ -10490,5 +10500,32 @@ li.user-right {
 
 li.user-right #navbarDropdown {
   color: #28a745 !important;
+}
+
+.dropdown-menu {
+  position: relative !important;
+  text-align: right;
+  background-color: #343a40;
+}
+
+.user-right #navbarDropdown {
+  text-align: right;
+}
+
+a.dropdown-item {
+  background-color: #343a40 !important;
+  color: #28a745 !important;
+}
+
+a.dropdown-item :hover {
+  color: #28a745 !important;
+}
+
+.navbar-nav {
+  background-color: #343a40;
+}
+
+#navbarSupportedContent .nav-link {
+  background-color: white !important;
 }
 

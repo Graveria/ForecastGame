@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Forecast;
 use Illuminate\Http\Request;
+use App\Game;
+use App\Team;
+use Auth;
 
 class ForecastController extends Controller
 {
@@ -14,6 +17,11 @@ class ForecastController extends Controller
      */
     public function index()
     {
+    
+        $gamesList = Game::all();
+        $teamsList = Team::all();
+        $userLogged = Auth::user();
+        // dd($gamesList, $teamsList, $userLogged);
         return view('forecasts');
     }
 

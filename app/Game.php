@@ -11,6 +11,7 @@ class Game extends Model
         'team1_id',
         'team2_id',
         'start_time',
+        'time',
         'result1',
         'result2'
     ];

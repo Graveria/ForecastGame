@@ -15,6 +15,16 @@
     color: #28a745!important;
 }
 
+.forecast-input {
+    width: 60px;
+    margin-bottom: 0px;
+    
+    input {
+        height: 25px;   
+        line-height: 14px; 
+    }
+}
+
 body {
     height: 100%;
     position: relative;
@@ -71,4 +81,33 @@ li.user-right {
     #navbarDropdown {
         color: #28a745!important;
     }
+}
+
+.dropdown-menu {
+    position: relative!important;
+    text-align: right;
+    background-color: #343a40;
+}
+
+.user-right #navbarDropdown {
+// padding-left: 90px;
+    text-align: right;
+}
+
+a.dropdown-item {
+    background-color: #343a40!important;
+    color: #28a745!important;
+
+    :hover {
+        color: #28a745!important;
+    }
+    
+}
+
+.navbar-nav {
+    background-color: #343a40;
+}
+
+#navbarSupportedContent .nav-link {
+    background-color: white!important;
 }

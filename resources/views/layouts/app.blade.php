@@ -19,6 +19,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        html, body {
+            background: no-repeat;
+            background-image: url('images/login-back.jpg');
+            background-attachment: fixed;
+            background-position: center; 
+        }
+
+        .py-4 {
+            padding-top: 100px!important;
+        }
+    </style>
+
 </head>
 <body>
     <div id="app">

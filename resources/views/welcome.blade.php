@@ -19,6 +19,10 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+                background: no-repeat;
+                background-image: url('images/login-back.jpg');
+                background-attachment: fixed;
+                background-position: center; 
             }
 
             .full-height {
@@ -82,11 +86,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Prognožu spēle
+                    Forecast game
                 </div>
 
                 <div class="links">
-                    <img href="https://png.pngtree.com/thumb_back/fw800/back_pic/04/04/60/29580acf9a361fe.jpg" class="img-responsive" alt="">
 
                     <a href="https://github.com/Graveria/ForecastGame">GitHub</a>
                 </div>

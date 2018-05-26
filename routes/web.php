@@ -24,7 +24,7 @@ Route::get('/forecasts', 'ForecastController@index');
 
 // Results routes for users and admin
 // Route::get('/results', 'GameController@index');
-Route::get('/games', 'GameController@index');
+Route::get('/games', 'GameController@create');
 Route::post('/games', 'GameController@store');
     // ->middleware('is_admin')    
     // ->name('admin');
