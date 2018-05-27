@@ -18,7 +18,10 @@ class ForecastController extends Controller
      */
     public function index()
     {
- //       $userForecasts = Forecast::all()->where('user_id', '==', Auth::id());
+        // Selecting array with data to show
+        // in forecasts table
+        // for each player, team names
+        // game start time and forecast input fields
         $userForecast = DB::select('select t1.abbreviation team1, t2.abbreviation team2,
         g.start_time, g.time,  f.forecast_result1, f.forecast_result2, f.id
         from forecasts f
@@ -29,8 +32,7 @@ class ForecastController extends Controller
         
         $gamesList = Game::all();
         $teamsList = Team::pluck('abbreviation', 'id');
-        // $userLogged = Auth::user();
-        // dd($userForecast);
+
         return view('forecasts', compact('userForecast'));
     }
 

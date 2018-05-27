@@ -4,29 +4,36 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    @if(Auth::check())
+
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link fcast-text" href="forecasts">Forecasts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link fcast-text" href="results">Results</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link fcast-text" href="top">Top</a>
-            </li>
-            {{--  <li class="nav-item">
-                <a class="nav-link fcast-text" href="users">Users</a>
-            </li>  --}}
-            <li class="nav-item">
-                <a class="nav-link fcast-text" href="team">Teams</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link fcast-text" href="games">Games</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link fcast-text" href="events">Events</a>
-            </li>
+            @if (Auth::user()->isAdmin())
+                <li class="nav-item">
+                    <a class="nav-link fcast-text" href="results">Results</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fcast-text" href="team">Teams</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fcast-text" href="games">Games</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fcast-text" href="events">Events</a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link fcast-text" href="forecasts">Forecasts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fcast-text" href="results">Results</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fcast-text" href="top">Top</a>
+                </li>
+            @endif
+            
+            
 
         <!-- Right Side Of Navbar -->
         {{--  <ul class="navbar-nav ml-auto">  --}}
@@ -56,4 +63,5 @@
             {{--  </ul>  --}}
         </ul>
     </div>
+    @endif
 </nav>

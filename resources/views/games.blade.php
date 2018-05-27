@@ -6,6 +6,7 @@
         <h1>Add new game</h1>
     </div>
 
+    {{--  New game creation form  --}}
     {!! Form::open(['url' => 'games']) !!}
 
         {{--  Event select field  --}}

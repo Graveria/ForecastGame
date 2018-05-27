@@ -6,7 +6,7 @@
         <h1>Add new event</h1>
     </div>
 
-
+    {{--  New event creation  --}}
     {!! Form::open(['url' => 'events']) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name:') !!}

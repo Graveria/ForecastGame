@@ -15,20 +15,16 @@ class PointCountController extends Controller
      */
     public function index()
     {
+        // Selecting from each players forecasts
+        // point summ
         $playerTop = DB::select('select u.name name, sum(f.points) summ
         FROM users u, forecasts f
         WHERE u.id=f.user_id
         GROUP BY name
         ORDER BY summ DESC');
 
-        // dd($playerTop);
-
-        // u.name, sum(f.points) SUM
-        // FROM users u, forecasts f
-        // WHERE u.id=f.user_id
-        // GROUP BY u.name
-        // ORDER BY SUM DESC
-
+        // Returning the playerTop array 
+        // with usernames and point sums to a view
         return view('top', compact('playerTop'));
     }
 

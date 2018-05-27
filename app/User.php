@@ -27,6 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // Adding user type admin
     const ADMIN_TYPE = 'admin';
     const DEFAULT_TYPE = 'default';
 

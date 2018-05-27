@@ -25,17 +25,21 @@
 
     </head>
     <body>
+        {{--  Global navigation  --}}
         @include('inc.navbar')
 
         <div class="col-md-12 col-ld-12">
             <div class="row">
                 <div class="container">
+                    {{--  Content for each page route  --}}
                     @yield('content')
                 </div>
             </div>    
         </div>
 
     </body>
+
+    {{--  Global footer  --}}
     <footer class="footer">
         {{--  <div class="container">  --}}
             <span class="text-muted fcast-text">Grototo by GA 2018 &#169</span>

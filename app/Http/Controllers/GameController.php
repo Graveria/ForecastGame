@@ -23,6 +23,7 @@ class GameController extends Controller
      */
     public function index()
     {
+        // Selecting and passing all game results to results view
         $resultsAll = DB::select('SELECT t1.abbreviation team1, t2.abbreviation team2,
         g.start_time,g.time,g.id id, g.result1, g.result2
        FROM games g
@@ -39,7 +40,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        // Selectin all event names and ids
+        // Selecting all event names and ids
         $eventList = Event::pluck('name', 'id');
         // Selecting all team names and ids
         $teamList = Team::pluck('name', 'id');
@@ -60,6 +61,7 @@ class GameController extends Controller
      */
     public function store()
     {
+        // Saving new game to from input form db
         $insert = [
             'event_id' => request('event_id'), 
             'team1_id' => request('team1_id'),
@@ -72,10 +74,11 @@ class GameController extends Controller
 
         $gameId = Game::create($insert)->id;
 
+        // Slecting all user ids and making 
+        // new forecasts for each user for each game
         $usersData = User::all('id')->toArray();
         $usersId = [];
         foreach($usersData as $key =>$value) {
-            // $usersId[$key] = $value['id'];
 
             $forecastInsert = [
                 'user_id' => $value['id'],
@@ -122,29 +125,27 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        // , compact('userForecast')
+        // Game result update
         $update = [
             'result1' => request('result1'),
             'result2' => request('result2')
         ];
 
         $resultsRow = Game::where('id', request('id'))->first();
-        // dd($resultsRow);
         $resultsRow->result1 = request('result1');
         $resultsRow->result2 = request('result2');
-        // dd($resultsRow);
         
         $resultsRow->save();
 
         // With every update, inserting in forecast table points
         $forecastsAll = Forecast::where('game_id', request('id'))->get();
-        // dd($forecastsAll);
+
         foreach($forecastsAll as $forRow) {
-            // $forRow['']
+            // Saving points in forecast table
+            // foreach user forecast
             $forRow['points'] = Game::pointCount(request('result1'), request('result2'), $forRow['forecast_result1'], $forRow['forecast_result2']); 
             $forRow->save();
         }
-        // dd($forRow);
         
         return redirect('/results');
     }

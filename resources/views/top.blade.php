@@ -6,9 +6,10 @@
         <h1>Players top</h1>
     </div>
 
+    {{--  Table with all users and points they have  --}}
     <div class="player-top">
-        <table class="table results">
-            <thead class="bg-warning">
+        <table class="table top">
+            <thead class="bg-success">
                 <tr>
                     <th scope="col">Place</th>
                     <th scope="col">Name</th>

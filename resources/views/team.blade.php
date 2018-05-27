@@ -6,7 +6,7 @@
         <h1>Add new team</h1>
     </div>
 
-
+    {{--  Team create form  --}}
     {!! Form::open(['url' => 'team']) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name:') !!}

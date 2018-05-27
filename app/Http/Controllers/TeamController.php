@@ -40,6 +40,7 @@ class TeamController extends Controller
             'abbreviation' => request('abbreviation')
         ];
 
+        // Inserting new team into database
         Team::create($insert);
 
         return redirect('team');
