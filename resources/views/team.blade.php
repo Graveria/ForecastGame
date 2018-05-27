@@ -10,12 +10,12 @@
     {!! Form::open(['url' => 'team']) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name:') !!}
-            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+            {!! Form::text('name', '', ['class' => 'form-control','required' => 'required']) !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('abbreviation', 'Abbreviation:') !!}
-            {!! Form::text('abbreviation', '', ['class' => 'form-control']) !!}
+            {!! Form::text('abbreviation', '', ['class' => 'form-control','required' => 'required']) !!}
         </div>
 
         <div class="form-group">

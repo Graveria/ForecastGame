@@ -10,12 +10,12 @@
     {!! Form::open(['url' => 'events']) !!}
         <div class="form-group">
             {!! Form::label('name', 'Name:') !!}
-            {!! Form::text('name', '', ['class' => 'form-control']) !!}
+            {!! Form::text('name', '', ['class' => 'form-control','required' => 'required']) !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('start_date', 'Start date:') !!}
-            {!! Form::date('start_date', '', ['class' => 'form-control']) !!}
+            {!! Form::date('start_date', '', ['class' => 'form-control','required' => 'required']) !!}
         </div>
 
         <div class="form-group">

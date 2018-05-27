@@ -31,12 +31,12 @@
                         {!! Form::open(['url' => 'results/update/'. $result->id]) !!}
                             <td>
                                 <div class="form-group result-input">
-                                    {!! Form::text('result1', $result->result1, ['class' => 'form-control']) !!}
+                                    {!! Form::text('result1', $result->result1, ['class' => 'form-control','required' => 'required']) !!}
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group result-input">
-                                    {!! Form::text('result2', $result->result2, ['class' => 'form-control']) !!}
+                                    {!! Form::text('result2', $result->result2, ['class' => 'form-control','required' => 'required']) !!}
                                 </div>
                             </td>
                             <td>
