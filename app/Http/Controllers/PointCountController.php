@@ -16,7 +16,7 @@ class PointCountController extends Controller
     public function index()
     {
         // Selecting from each players forecasts
-        // point summ
+        // point summ from each forecast
         $playerTop = DB::select('select u.name name, sum(f.points) summ
         FROM users u, forecasts f
         WHERE u.id=f.user_id

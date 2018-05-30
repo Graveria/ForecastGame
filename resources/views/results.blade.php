@@ -50,7 +50,7 @@
                         {!! Form::close() !!}
                     @else
                         <td>{{$result->result1}}</td>
-                        <td>{{$result->result1}}</td>
+                        <td>{{$result->result2}}</td>
                     @endif
 
                 </tr>

@@ -33,9 +33,6 @@ Route::post('/games', 'GameController@store')->middleware('is_admin')->name('adm
 Route::get('/results', 'GameController@index')->middleware('auth');
 Route::post('/results/update/{id}', 'GameController@update')->middleware('auth'); 
 
-
-   
-
 // Teams routes for admin
 Route::get('/team', 'TeamController@index')->middleware('is_admin')->name('admin');
 Route::post('/team', 'TeamController@store')->middleware('is_admin')->name('admin');

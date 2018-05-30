@@ -40,6 +40,7 @@ class EventController extends Controller
             'start_date'  => request('start_date')
         ];
 
+        // Inserting new event into db
         Event::create($insert);
 
         return redirect('events');

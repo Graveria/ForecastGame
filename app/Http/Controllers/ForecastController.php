@@ -88,14 +88,15 @@ class ForecastController extends Controller
      */
     public function update(Request $request, Forecast $forecast)
     {
-        // , compact('userForecast')
+        // Updating users forecast table results
         $update = [
             'forecast_result1' => request('forecast_result1'),
             'forecast_result2' => request('forecast_result2')
         ];
 
+        // Get forecast id for user
         $foreRow = Forecast::find(request('id'));
-        // dd($foreRow);
+        
         $foreRow->forecast_result1 = request('forecast_result1');
         $foreRow->forecast_result2 = request('forecast_result2');
         $foreRow->save();

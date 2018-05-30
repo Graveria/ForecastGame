@@ -23,14 +23,14 @@ class GameController extends Controller
      */
     public function index()
     {
-        // Selecting and passing all game results to results view
+        // Selecting and passing all game results to results view as array
         $resultsAll = DB::select('SELECT t1.abbreviation team1, t2.abbreviation team2,
         g.start_time,g.time,g.id id, g.result1, g.result2
        FROM games g
        INNER JOIN teams t1 on g.team1_id = t1.id
        INNER JOIN teams t2 on g.team2_id = t2.id');
-     //  dd($resultsAll);
-       return view('results', compact('resultsAll'));
+
+        return view('results', compact('resultsAll'));
     }
 
     /**
@@ -45,12 +45,7 @@ class GameController extends Controller
         // Selecting all team names and ids
         $teamList = Team::pluck('name', 'id');
 
-        // dd($eventList);
         return view('games', compact('eventList','teamList'));
-
-        // return view('games', [
-        //     'all_teams' => $teams
-        // ]);    
     }
 
     /**
@@ -59,8 +54,14 @@ class GameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        // Validating if result is integer
+        $request->validate([
+            'result1' => 'required|integer',
+            'result2' => 'required|integer',
+        ]);
+
         // Saving new game to from input form db
         $insert = [
             'event_id' => request('event_id'), 
@@ -72,17 +73,19 @@ class GameController extends Controller
             'result2' => request('result2')
         ];
 
+        // Pushing game data into db
         $gameId = Game::create($insert)->id;
-
+        
         // Slecting all user ids and making 
         // new forecasts for each user for each game
         $usersData = User::all('id')->toArray();
         $usersId = [];
+
         foreach($usersData as $key =>$value) {
 
             $forecastInsert = [
                 'user_id' => $value['id'],
-                'id' => $gameId,
+                'game_id' => $gameId,
                 'forecast_result1' => 0,
                 'forecast_result2' => 0,
                 'points' => 0,
@@ -131,6 +134,7 @@ class GameController extends Controller
             'result2' => request('result2')
         ];
 
+        // Pulling data from game table and getting all game results
         $resultsRow = Game::where('id', request('id'))->first();
         $resultsRow->result1 = request('result1');
         $resultsRow->result2 = request('result2');

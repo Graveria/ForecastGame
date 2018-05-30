@@ -35,6 +35,14 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation for team creation
+        // Team name and abbreviatin is required and both are unique in db
+        // abbreviation needs to be atleast 3 symbols long
+        $request->validate([
+            'name' => 'required|unique:teams,name|max:191',
+            'abbreviation' => 'required|min:3|unique:teams',
+        ]);
+
         $insert = [
             'name' => request('name'), 
             'abbreviation' => request('abbreviation')
